@@ -1,6 +1,6 @@
 # Reproducible Research: Peer Assessment 1
 
-This is an analysis of data collected at 5 minute intervals from an (anonimous) personal activity monitoring device over two months (Oct-Nov 2012). The data were provided within the Johns Hopkins course on Data Science - Reproducible Researh (May 2015 version; https://github.com/rdpeng/RepData_PeerAssessment1) and unzipped in the working directory. [activity.csv]
+This is an analysis of data collected at 5 minute intervals from an (anonimous) personal activity monitoring device over two months (Oct-Nov 2012). The data were provided within the Johns Hopkins course on Data Science - Reproducible Research (May 2015 version; https://github.com/rdpeng/RepData_PeerAssessment1) and unzipped in the working directory. [activity.csv]
 
 ## Loading and preprocessing the data
 
@@ -174,7 +174,7 @@ hist(dailyact1$Sum, main = "Total number of steps per day, imputed data",
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-First, we add a column to indicate weekday vs weekend:
+First, we add a column to indicate weekday vs weekend in duplicate dataset activity2:
 
 ```r
 #Duplicate the dataset
@@ -220,11 +220,12 @@ library(ggplot2)
 ## Warning: package 'ggplot2' was built under R version 3.1.2
 ```
 
+
 ```r
 plot <- ggplot(intervalact1, aes(interval, Average))
-plot + geom_line(aes(color = Weekday)) + scale_x_continuous(breaks=c(0,400, 800, 1200, 1600, 2000, 2400), labels=c("0:00", "4:00", "8:00", "12:00", "16:00", "20:00", "24:00")) + theme_bw() + labs(title = "Daily patterns during the week and in the weekend", x = "Time", y = "Average number of steps")
+plot + geom_line(aes(color = Weekday)) + scale_x_continuous(breaks=c(0,400, 800, 1200, 1600, 2000, 2400), labels=c("0:00", "4:00", "8:00", "12:00", "16:00", "20:00", "24:00")) + theme_bw() + labs(title = "Daily patterns on weekdays vs the weekend", x = "Time", y = "Average number of steps")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-13-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
 
 In conclusion, there are differences between workdays and weekends. As expected, workdays tend to start being active (measured in numbers of steps) a bit earlier than weekends, but are less 'active' during working hours than the same time in the weekend. 
